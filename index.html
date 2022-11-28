@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Udemy - Utilisation de Vue.js</title>
+</head>
+<body>
+
+
+<div id="app">
+    <h2>Utilisation des v-once et des appels à variables dans data {{ }}</h2>
+    <!-- v-once fixe la variable à sa première instanciation -->
+    <p v-once>{{ title }}</p>
+    <p>{{ title }}</p><br>
+
+    
+    <h2>Utilisation de V-model</h2>
+    <!-- v-model permet d'ajouter une variable à un input ou output --> 
+    <input v-model=title type="text">
+    <!-- v-on permet de modifier une animation v-on peut être remplacé par @-->
+    <button v-on:click="reverseTitle">inverser</button>
+    
+    <h2>Utilisation de v-bind :, v-html, v-on @</h2>
+    <!--  v-bind (:) permet de modifier une propriété  -->
+    <p  v-bind:title="title">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro a sunt modi provident eum </p>
+    <p @mouseover="hover">
+        <!-- vhtml permet d'insérer du html-->
+        <span v-html="strongTag"></span><br>
+        <!-- Le @action.stop permet de ne pas appliquer l'evenement-->
+        <span @mouseover.stop>Element fixe sans animation</span>
+        Balise : {{ tagname }}
+    </p><br>
+
+    <h2>Création d'alerte</h2>
+    <!-- Ceci crée une alerte -->
+    <p>Cette input dispose d'une alerte sur des touches</p>
+    <p>Ici il ne s'applique que sur la touche enter et espace</p>
+    <input type="text" @keyup.enter.space="alert('une touche')">
+
+    <h2>Incrémentation et computed</h2>
+    <button @click="increase">Incrémenter</button>
+    <button @click="decrease">Décrémenter</button>
+    <p>{{ counter }}</p>
+    <p>{{ wordmethod() }} - {{ wordComputed }}</p>
+
+    <button @click="isBlue = !isBlue">Bleu</button>
+    <button @click="isUnderline =!isUnderline">Souligné</button>
+    <h3 class="titre" :class="myClass">Gérer les classes</h3>
+    <h3 class="titre">Gérer les classes 2</h3>
+    <h3 class="titre">Gérer les classes 3</h3>
+
+    <ul>
+        <li v-for="name in names">{{ name }}</li>
+    </ul>
+
+    <ul>
+        <li v-for="(name, index) in names">{{ index }} - {{ name }}</li>
+    </ul>
+
+
+</div>
+
+
+
+<script src="animations.js"></script>
+</body>
+</html>
